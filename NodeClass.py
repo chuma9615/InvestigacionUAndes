@@ -1,7 +1,9 @@
+import numpy as np
+
 class Nodo:
     def __init__(self,id,Status):
         self.id = id
-        self.status = Status
+        self.stat = Status
         self.predisposicion = None
         self.memory = {}
         self.opinion = ''
@@ -12,4 +14,7 @@ class Nodo:
     @property
     def status(self):
         # distribucion de probabilidad
-        return ''
+        return np.random.choice(1, 0)
+
+    def set_status(self):
+        self.stat = np.random.choice(1, 0)

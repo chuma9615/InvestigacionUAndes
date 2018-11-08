@@ -14,7 +14,7 @@ class Nodo:
     @property
     def status(self):
         # distribucion de probabilidad
-        return np.random.choice(1, 0)
+        return np.random.choice([1,0])
 
     def set_status(self):
-        self.stat = np.random.choice(1, 0)
+        self.stat = np.random.choice([1,0])

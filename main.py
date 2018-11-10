@@ -33,7 +33,10 @@ for line in data:
     target_id2 = int(line.split(" ")[1])
     Red.add_edge(lista_nodos[target_id1],lista_nodos[target_id2], object=Link(target_id1, target_id2))
 data.close()
-for iteracion in range(13):
+
+iteraciones = 13
+
+for iteracion in range(iteraciones): #
     definir_status(Red.nodes)
     definir_links_activos(Red.edges)
     pass #Aqui van los diversos

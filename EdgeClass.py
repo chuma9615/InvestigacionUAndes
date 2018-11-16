@@ -5,8 +5,8 @@ class Link:
         self.n1 = n1
         self.n2 = n2
         self.value = ''
-    @property
+
     def set_value(self):
         # distribucion de probabilidad
-        self.value = np.random.choice([1,0])
-        return self.value
+        self.value = np.random.choice([True,False])
+        #return self.value

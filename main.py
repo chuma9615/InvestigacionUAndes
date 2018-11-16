@@ -3,44 +3,43 @@ import numpy as np
 from EdgeClass import Link
 from NodeClass import Nodo
 import matplotlib
+from functions import *
 
-def definir_status(lista):
-    for item in lista:
-        item.set_status()
-    return
 
-def definir_links_activos(lista):
-    for item in lista:
-        # print(item[0].id)
-        # item.set_value()
-        pass
 
 Red = nx.Graph()
 lista_nodos = {}
 lista_links = ''
 for i in range(4039):
-    status = np.random.choice([1,0])
-    nodo = Nodo(i, status )
+     # """En este ciclo se instancian los nodos
+     #        con una id particular y se guardan en el diccionario"""
+    nodo = Nodo(i)
+    nodo.calculate_predisposition
     lista_nodos[i] = nodo
 
 
 for i in lista_nodos.values():
+    # """ En este ciclo se agregan los nodos al objeto grafo """
     Red.add_node(i)
-print(Red.edges.data)
+print(Red.edges)
+
 data = open('facebook_combined.txt', 'r')
 for line in data:
-    target_id1 = int(line.split(" ")[0])
-    target_id2 = int(line.split(" ")[1])
+    """ En este ciclo se agregan los arcos """
+    aux = line.split(" ")
+    target_id1 = int(aux[0])
+    target_id2 = int(aux[1])
     Red.add_edge(lista_nodos[target_id1],lista_nodos[target_id2], object=Link(target_id1, target_id2))
 data.close()
+
+predisposicion_0 = calcular_ratio_predisposicion(Red.nodes)
 
 iteraciones = 13
 
 for iteracion in range(iteraciones): #
     definir_status(Red.nodes)
-    definir_links_activos(Red.edges)
-    pass #Aqui van los diversos
+    definir_links_activos(Red.edges(data=True))
+     #Aqui van los diversos
 print(Red.get_edge_data(lista_nodos[0],lista_nodos[1])['object'].set_value)
 print(Red.number_of_nodes())
 print(Red.number_of_edges())
-# nx.draw(Red)

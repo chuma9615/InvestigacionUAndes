@@ -9,4 +9,4 @@ class Link:
     def set_value(self):
         # distribucion de probabilidad
         self.value = np.random.choice([True,False])
-        #return self.value
+        return self.value

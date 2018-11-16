@@ -9,7 +9,7 @@ class Nodo:
         self.opinion = ''
 
     def __repr__(self):
-        return str(self.id)
+        return 'nodo ' + str(self.id)
 
 
     @property
@@ -24,10 +24,11 @@ class Nodo:
             self.predisposicion = 0
 
 
-    def set_status(self,probabilidad=1):
+    def set_status(self,probabilidad=1,on=True):
         numero = np.random.uniform()
-        if numero < probabilidad:
-            if self.stat:
+        if on and self.stat:
+            if numero < probabilidad:
                 self.stat = False
-            elif not self.stat:
+        if not on and not self.stat:
+            if numero < probabilidad:
                 self.stat = True

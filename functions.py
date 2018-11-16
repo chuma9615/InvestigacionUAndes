@@ -45,12 +45,12 @@ def propagar_informacion(red,iteracion):
         for edge in subgrafo.edges(data=True):
             if not edge[2]['object'].value:
                 aux.append(edge)
+        # print(aux)
         subgrafo.remove_edges_from(aux)
 
-        for nodo in subgrafo:
-            status_conexo = []
-            for no2 in nx.algorithms.components.node_connected_component(subgrafo,nodo):
-                status_conexo.append(no2.stat)
+        for nodo in subgrafo.nodes:
+            # print(nodo)
+            status_conexo = [no2.stat for no2 in nx.algorithms.components.node_connected_component(subgrafo,nodo)]
             nodo.memory[iteracion]=status_conexo
 
 

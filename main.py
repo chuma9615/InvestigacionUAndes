@@ -1,5 +1,4 @@
 import networkx as nx
-import numpy as np
 from EdgeClass import Link
 from NodeClass import Nodo
 import matplotlib
@@ -37,16 +36,17 @@ lista_arcos = Red.edges()
 predisposicion_0 = calcular_ratio_predisposicion(Red.nodes)
 
 iteraciones = 1
-
+info = {}
 for iteracion in range(iteraciones): #
     definir_status(Red.nodes)
     definir_links_activos(Red)
     ratio_global = calcular_ratio_activos(Red.nodes)
     #print(ratio_global)
-    propagar_informacion(Red,iteracion)
+    avg_clustering = propagar_informacion(Red,iteracion)
      #Aqui van los diversos
+    info[iteracion] = {'ratio': ratio_global,'avg_shortest_path':avg_clustering}
 # print(Red.get_edge_data(lista_nodos[0],lista_nodos[1])['object'].set_value)
 nodos = list(Red.nodes())
-print(nodos[0].memory)
+print(info)
 print(Red.number_of_nodes())
 print(Red.number_of_edges())

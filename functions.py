@@ -1,13 +1,15 @@
 import numpy as np
 import networkx as nx
+import setup
+from copy import deepcopy
 
 def definir_status(lista):
-    p = np.random.uniform()
+    p = setup.distribucion_definir_status(*setup.parametros_definir_status)
     for item in lista:
-        item.set_status(p,True)
-    p = np.random.uniform()
-    for item in lista:
-        item.set_status(p,False)
+        if item.stat:
+            item.set_status(p,True)
+        if not item.stat:
+            item.set_status(p,False)
     return
 
 def definir_links_activos(red):
@@ -40,6 +42,7 @@ def calcular_ratio_activos(nodos):
     return ratio
 
 def propagar_informacion(red,iteracion):
+    red2 = deepcopy(red)
     for subgrafo in nx.connected_component_subgraphs(red):
         aux = []
         for edge in subgrafo.edges(data=True):
@@ -47,7 +50,7 @@ def propagar_informacion(red,iteracion):
                 aux.append(edge)
         # print(aux)
         subgrafo.remove_edges_from(aux)
-
+        red2.remove_edges_from(aux)
         for nodo in subgrafo.nodes:
             # print(nodo)
             status_conexo = [no2.stat for no2 in nx.algorithms.components.node_connected_component(subgrafo,nodo)]
@@ -60,5 +63,5 @@ def propagar_informacion(red,iteracion):
 
         # for item in subred:
 
-        break
-    pass
+
+    return nx.average_clustering(red2)

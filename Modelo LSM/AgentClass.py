@@ -6,6 +6,7 @@ class Agente:
         self.monitoreando = None
         self.sesgo_normal = np.normal(0,p.sesgo_desviacion_estandar)
         self.sesgo_especialista = np.normal(0,p.sesgo_desviacion_estandar_especialista)
+        self.especialidades = ''
 
     def set_sesgo_especialista(self):
         self.sesgo_especialista = np.normal(0,p.sesgo_desviacion_estandar_especialista)

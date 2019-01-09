@@ -5,6 +5,8 @@ class Sector:
     def __init__(self):
         self.nombre = ''
         self.especialistas = {}
-        self.fenomenos = {}
+        self.fenomenos = []
         self.ruido = ''
-        self.senal = {'creciente':func.creciente,'decreciente':func.decreciente,'sin':func.sinusoidal,'escalon':func.escalon}
+
+    def instanciar_fenomenos(self):
+        pass

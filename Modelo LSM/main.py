@@ -18,7 +18,7 @@ for i in range(cantidad_sectores):
 """ instanciar agentes del modelo """
 agentes = []
 for i in range(numero_agentes):
-    agent = Agente(np.random.choice(list(sectores.keys()),p.memoria_agentes))
+    agent = Agente(np.random.choice(list(sectores.keys()),p.sectores_por_agentes))
     agentes.append(agent)
 
 """ se corren las iteraciones """

@@ -16,7 +16,7 @@ class Fenomeno:
         # self.senal = ''
     @property
     def ruido(self):
-        return np.random.triangular(0,p.ruido_fenomeno,1)
+        return np.random.triangular(0,p.ruido_fenomeno,0.4)
 
     def cambiar_estado(self):
         if self.estado == 'inactivo':
@@ -31,4 +31,8 @@ class Fenomeno:
             self.intensidad = senal + ruido
             self.historico[iteracion] = {'señal':senal,'ruido':ruido,'intensidad':self.intensidad}
         except StopIteration:
-            pass
+            self.intensidad = self.ruido
+            self.estado = 'inactivo'
+            print(self.estado)
+            self.senal = np.random.choice((func.creciente(),func.decreciente(),func.sinusoidal(),func.escalon(),func.randomwalk()))
+            self.historico[iteracion] = {'intensidad':self.intensidad,'señal':0}

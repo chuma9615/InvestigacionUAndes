@@ -10,6 +10,7 @@ class Agente:
         self.sesgo_especialista = np.random.triangular(0,p.sesgo_desviacion_estandar_especialista,1) #triangular u uniforme
         self.especialidades = ''
         self.historico = {}
+        self.historico_forecast = {x:0 for x in range(100)}
         while self.sesgo_normal <= self.sesgo_especialista or self.sesgo_normal > 1 or self.sesgo_especialista > 1:
             self.sesgo_normal = np.random.triangular(0,p.sesgo_desviacion_estandar,1) #Triangular o uniforme
             self.sesgo_especialista = np.random.triangular(0,p.sesgo_desviacion_estandar_especialista,1) #triangular u uniforme
@@ -22,10 +23,15 @@ class Agente:
 
     def forecast(self):
         cuenta_atras = len(self.historico) - p.memoria_agentes
-        data_historico = [self.historico[i] for i in range(cuenta_atras,len(self.historico))]
+        data_historico = [self.historico[i]['intensidad'] for i in range(cuenta_atras,len(self.historico))]
         data_tiempo = [[i] for i in range(cuenta_atras,len(self.historico))]
         print(data_tiempo)
+        print(data_historico)
         regr = linear_model.LinearRegression()
         regr.fit(data_tiempo, data_historico)
         predictions = regr.predict([[len(self.historico)]])
+        print(predictions)
+        for predi in predictions:
+            self.historico_forecast[cuenta_atras] = predi
+            cuenta_atras += 1
         return predictions

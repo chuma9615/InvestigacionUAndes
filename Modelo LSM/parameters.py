@@ -1,26 +1,25 @@
-
-
-
+import random
 
 """ Parametros iteraciones"""
-numero_iteraciones = 100
-ciclo_senal= 20
+numero_iteraciones = 50
+ciclo_senal= 10
 
 """ Parametros agentes """
-numero_agentes = 10
-memoria_agentes = 7
-sectores_por_agentes = 1
+numero_agentes = 20
+memoria_agentes = 5
+sectores_por_agentes = 4
 forecasting = True
 umbral_percepcion_agente = 0.3
-probabilidad_transicion_inactivo_latente = 0.6
-sesgo_desviacion_estandar = 0.2
-sesgo_desviacion_estandar_especialista = 0.1
+
 
 
 """Parametros sectores/fenomenos """
-cantidad_sectores = 2
+probabilidad_transicion_inactivo_latente = 0.9
+sesgo_normal = 0.4
+sesgo_especialista = 0.2
+cantidad_sectores = 10
 fenomenos_por_sector = 1
-ruido_fenomeno = 0.15
+ruido_fenomeno = random.uniform(-0.1,0.1)
 
 """ Parametros Funciones"""
 mu_rw = 0

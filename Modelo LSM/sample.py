@@ -9,8 +9,8 @@ diabetes = datasets.load_diabetes()
 
 
 # Use only one feature
-diabetes_X_train = [ np.sin(3*np.pi*i/39) for i in range(40)]
-diabetes_X_test = [ np.sin(3*np.pi*i/39) for i in range(40)]
+diabetes_X_train = [ np.sin(3*np.pi*i/39) for i in range(60)]
+diabetes_X_test = [ np.sin(3*np.pi*i/39) for i in range(60)]
 diabetes_t_train = [ [i] for i in range(len(diabetes_X_train))]
 diabetes_t_test = [ [i] for i in range(len(diabetes_X_train))]
 # Split the data into training/testing sets

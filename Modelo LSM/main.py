@@ -41,7 +41,7 @@ for iteracion in range(numero_iteraciones):
         for sector in agente.sectores:
             for fenomeno in sectores[sector]:
                 if p.forecasting and iteracion > p.memoria_agentes:
-                    agente.forecast(iteracion,sector,fenomeno.numero_fenomeno)
+                    agente.forecast(iteracion,'sector ' + str(sector),fenomeno.numero_fenomeno)
 
                 if fenomeno.intensidad > agente.umbral:
                     agente.historico[iteracion]['sector '+ str(fenomeno.sector)][fenomeno.numero_fenomeno] = {'intensidad':fenomeno.intensidad,'sobre_umbral':True,'señal':fenomeno.senal}
@@ -67,13 +67,19 @@ for agente in agentes:
     pp.pprint(agente.historico)
     # pp.pprint(agente.historico_forecast)
 
-item = [ x['señal'] for x in list(sectores[agentes[0].sectores[0]][0].historico.values()) ]
-item2= [x for x in list(agentes[0].historico_forecast.values())] #Revisar la indexacion de la informacion
+# item = [ x['señal'] for x in list(sectores[agentes[0].sectores[0]][0].historico.values()) ]
+agente = agentes[0]
+sector = 'sector ' + str(agentes[0].sectores[0])
+fenomeno = 0
+pp.pprint(agente.historico_forecast)
+item2= [x[sector][0] for x in list(agente.historico_forecast.values()) ] #Revisar la indexacion de la informacion
+# print(sectores[agentes[0].sectores[0]][0].historico , 'dict historico')
 item3 = [ x['intensidad'] for x in list(sectores[agentes[0].sectores[0]][0].historico.values()) ]
 print(item3,'historico')
 print(item2,'forecast')
 # print(item,len(item))3
 plt.plot(item3)
 plt.plot(item2)
+plt.legend()
 # plt.plot(item3)
 plt.show()

@@ -43,7 +43,7 @@ class Fenomeno:
                 retorna un float compuesto por 2 valores, el ruido estandar de los fenomenos
                 seteados en parameters.py y una variable aleatoria normal mu=0 sigma=0.05
         """
-        return p.ruido_fenomeno + np.random.normal(0,0.05) # promedio en cero
+        return p.ruido_fenomeno + np.random.normal(0,0.005) # promedio en cero
 
     def cambiar_estado(self):
 

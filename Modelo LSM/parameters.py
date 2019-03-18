@@ -14,12 +14,12 @@ umbral_percepcion_agente = 0.3
 
 
 """Parametros sectores/fenomenos """
-probabilidad_transicion_inactivo_latente = 0.9
+probabilidad_transicion_inactivo_latente = 0.6
 sesgo_normal = 0.4
 sesgo_especialista = 0.2
 cantidad_sectores = 10
 fenomenos_por_sector = 1
-ruido_fenomeno = random.uniform(-0.1,0.1)
+ruido_fenomeno = 0
 
 """ Parametros Funciones"""
 mu_rw = 0
